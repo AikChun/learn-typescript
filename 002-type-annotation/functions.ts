@@ -17,3 +17,11 @@ const multiply = function (a: number, b: number): number {
 const logNum = (a: number): void => {
   console.log(a);
 };
+
+// Functions that might throw an error we annotate as though the function would never throw an exception.
+const printMessage = (m: string): string => {
+  if (m == '') {
+    throw new Error('');
+  }
+  return m;
+};
