@@ -25,3 +25,20 @@ const printMessage = (m: string): string => {
   }
   return m;
 };
+
+// Function paramater type annotation with destructuring.
+const todaysForecast = {
+  date: new Date(),
+  weather: 'sunny',
+};
+
+const logWeather = ({
+  date,
+  weather,
+}: {
+  date: Date;
+  weather: string;
+}): void => {
+  console.log(date);
+  console.log(weather);
+};
