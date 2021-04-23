@@ -11,8 +11,8 @@ const oldCivic = {
   },
 };
 
-const printVehicle = (vehicle: Reportable): void => {
-  console.log(vehicle.summary());
+const printSummary = (item: Reportable): void => {
+  console.log(item.summary());
 };
 
 printVehicle(oldCivic);
