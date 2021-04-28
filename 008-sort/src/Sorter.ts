@@ -1,5 +1,3 @@
-import { NumbersCollection } from './NumbersCollection';
-
 interface Sortable {
   length: number;
   swap(leftIndex: number, rightIndex: number): void;
