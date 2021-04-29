@@ -7,9 +7,6 @@ export class Node {
 
 export class LinkedList extends Sorter {
   head: Node | null = null;
-  constructor() {
-    super();
-  }
 
   add(data: number): void {
     const node = new Node(data);

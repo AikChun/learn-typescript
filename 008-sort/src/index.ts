@@ -1,6 +1,7 @@
 import { CharactersCollection } from './CharactersCollection';
 import { LinkedList } from './LinkedList';
 import { NumbersCollection } from './NumbersCollection';
+
 const numbersCollection = new NumbersCollection([10, 3, -1, 0]);
 numbersCollection.sort();
 console.log(numbersCollection.data);

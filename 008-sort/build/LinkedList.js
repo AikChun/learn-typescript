@@ -28,7 +28,7 @@ exports.Node = Node;
 var LinkedList = /** @class */ (function (_super) {
     __extends(LinkedList, _super);
     function LinkedList() {
-        var _this = _super.call(this) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.head = null;
         return _this;
     }
