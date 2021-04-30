@@ -1,15 +1,11 @@
 import fs from 'fs';
 import { CsvFileReader } from './CsvFileReader';
 import { dateStringToDate } from './utils';
+import { MatchResult } from './MatchResult';
 
 const csvFileReader = new CsvFileReader('./football.csv');
 csvFileReader.read();
 
-enum MatchResult {
-  HomeWin = 'H',
-  AwayWin = 'A',
-  Draw = 'D',
-}
 let manUnitedWins = 0;
 
 for (let match of csvFileReader.data) {
