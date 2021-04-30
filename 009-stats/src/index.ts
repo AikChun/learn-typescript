@@ -6,6 +6,8 @@ import { MatchResult } from './MatchResult';
 const csvFileReader = new CsvFileReader('./football.csv');
 csvFileReader.read();
 
+console.log(csvFileReader.data[0][0]);
+
 let manUnitedWins = 0;
 
 for (let match of csvFileReader.data) {
@@ -17,4 +19,3 @@ for (let match of csvFileReader.data) {
 }
 
 console.log(`Man United won ${manUnitedWins} games`);
-console.log(`Date of 28/10/2020: ${dateStringToDate('28/10/2020')}`);
