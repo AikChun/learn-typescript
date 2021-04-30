@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { CsvFileReader } from './CsvFileReader';
+import { dateStringToDate } from './utils';
 
 const csvFileReader = new CsvFileReader('./football.csv');
 csvFileReader.read();
@@ -20,3 +21,4 @@ for (let match of csvFileReader.data) {
 }
 
 console.log(`Man United won ${manUnitedWins} games`);
+console.log(`Date of 28/10/2020: ${dateStringToDate('28/10/2020')}`);
