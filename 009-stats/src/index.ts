@@ -4,20 +4,22 @@ import { dateStringToDate } from './utils';
 import { MatchResult } from './MatchResult';
 import { CsvFileReader } from './CsvFileReader';
 import { WinsAnalyzer } from './analyzers/WinsAnalyzer';
+import { HtmlReport } from './reportTargets/HtmlReport';
 import { ConsoleReport } from './reportTargets/ConsoleReport';
 import { Summary } from './Summary';
-import { Console } from 'node:console';
 
 const csvFileReader = new CsvFileReader('./football.csv');
 
 const matchReader = new MatchReader(csvFileReader);
 matchReader.load();
 
-const summary = new Summary(
-  new WinsAnalyzer('Man United'),
-  new ConsoleReport()
-);
+const manUnitedWinsAnalyzer = new WinsAnalyzer('Man United');
+
+const summary = new Summary(manUnitedWinsAnalyzer, new ConsoleReport());
+
+const htmlSummary = new Summary(manUnitedWinsAnalyzer, new HtmlReport());
 summary.buildAndPrintReport(matchReader.matches);
+htmlSummary.buildAndPrintReport(matchReader.matches);
 
 // console.log(matchReader.matches);
 
