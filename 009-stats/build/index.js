@@ -1,20 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var MatchReader_1 = require("./MatchReader");
-var MatchResult_1 = require("./MatchResult");
 var CsvFileReader_1 = require("./CsvFileReader");
+var WinsAnalyzer_1 = require("./analyzers/WinsAnalyzer");
+var ConsoleReport_1 = require("./reportTargets/ConsoleReport");
+var Summary_1 = require("./Summary");
 var csvFileReader = new CsvFileReader_1.CsvFileReader('./football.csv');
 var matchReader = new MatchReader_1.MatchReader(csvFileReader);
 matchReader.load();
-console.log(matchReader.matches);
-var manUnitedWins = 0;
-for (var _i = 0, _a = matchReader.matches; _i < _a.length; _i++) {
-    var match = _a[_i];
-    if (match[1] === 'Man United' && match[5] === MatchResult_1.MatchResult.HomeWin) {
-        manUnitedWins++;
-    }
-    else if (match[2] === 'Man United' && match[5] === MatchResult_1.MatchResult.AwayWin) {
-        manUnitedWins++;
-    }
-}
-console.log("Man United won " + manUnitedWins + " games");
+var summary = new Summary_1.Summary(new WinsAnalyzer_1.WinsAnalyzer('Man United'), new ConsoleReport_1.ConsoleReport());
+summary.buildAndPrintReport(matchReader.matches);
+// console.log(matchReader.matches);
+// let manUnitedWins = 0;
+// for (let match of matchReader.matches) {
+//   if (match[1] === 'Man United' && match[5] === MatchResult.HomeWin) {
+//     manUnitedWins++;
+//   } else if (match[2] === 'Man United' && match[5] === MatchResult.AwayWin) {
+//     manUnitedWins++;
+//   }
+// }
+// console.log(`Man United won ${manUnitedWins} games`);
