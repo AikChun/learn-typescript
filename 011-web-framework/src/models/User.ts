@@ -3,7 +3,7 @@ interface UserProps {
   age?: number;
 }
 
-type Callback = () => {};
+type Callback = () => void;
 
 export class User {
   private listeners: { [key: string]: Callback[] } = {};
@@ -17,7 +17,7 @@ export class User {
     Object.assign(this.data, update);
   }
 
-  on(eventName: string, callback: Callback) {}
+  on(eventName: string, callback: Callback): void {}
 }
 
 new User({ name: 'asdf', age: 20 });
