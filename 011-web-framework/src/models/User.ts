@@ -3,7 +3,10 @@ interface UserProps {
   age?: number;
 }
 
+type Callback = () => {};
+
 export class User {
+  private listeners: {} = {};
   constructor(private data: UserProps) {}
 
   get(propName: string): string | number {
@@ -13,6 +16,8 @@ export class User {
   set(update: UserProps): void {
     Object.assign(this.data, update);
   }
+
+  on(eventName: string, callback: Callback) {}
 }
 
 new User({ name: 'asdf', age: 20 });
