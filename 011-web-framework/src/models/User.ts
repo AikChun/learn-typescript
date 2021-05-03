@@ -6,7 +6,7 @@ interface UserProps {
 type Callback = () => {};
 
 export class User {
-  private listeners: {} = {};
+  private listeners: { [key: string]: Callback[] } = {};
   constructor(private data: UserProps) {}
 
   get(propName: string): string | number {
