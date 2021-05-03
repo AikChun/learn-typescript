@@ -23,3 +23,26 @@ class ArrayOfAnything<T> {
 }
 
 const a = new ArrayOfAnything(['a', 'b', 'c']); // type inference is used here to determine type
+
+// Example of generics with functions
+
+function printStrings(arr: string[]): void {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+}
+
+function printNumbers(arr: number[]) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+}
+
+function printAnything<T>(arr: T[]) {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+}
+
+printAnything<string>(['x', 'y', 'z']);
+printAnything(['x', 'y', 'z']);
