@@ -6,4 +6,4 @@ user.events.on('change', () => {
   console.log('Changed!');
 });
 
-user.events.trigger('change');
+console.log(user.data.get('name'));
