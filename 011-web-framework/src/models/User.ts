@@ -8,13 +8,15 @@ export interface UserProps {
   age?: number;
 }
 
+const baseUrl = 'http://localhost:3000/users';
+
 export class User {
   public events: Eventing = new Eventing();
-  public sync = new Sync<UserProps>('http://localhost:3000/users');
-  data: Attributes<UserProps>;
+  public sync = new Sync<UserProps>(baseUrl);
+  public attributes: Attributes<UserProps>;
 
-  constructor(data: UserProps) {
-    this.data = new Attributes<UserProps>(data);
+  constructor(attrs: UserProps) {
+    this.attributes = new Attributes<UserProps>(attrs);
   }
 }
 
