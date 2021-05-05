@@ -32,12 +32,12 @@ export class User {
     return this.attributes.get;
   }
 
-  set(update: UserProps): void {
+  set = (update: UserProps): void => {
     this.attributes.set(update);
     this.events.trigger('change');
-  }
+  };
 
-  fetch(): void {
+  fetch = (): void => {
     const id = this.get('id');
 
     if (typeof id !== 'number') {
@@ -47,13 +47,13 @@ export class User {
     this.sync.fetch(id).then((response: AxiosResponse): void => {
       this.set(response.data);
     });
-  }
+  };
 
-  save() {
+  save = () => {
     this.sync.save(this.attributes.data).then((response) => {
       this.attributes.get(response.data);
     });
-  }
+  };
 }
 
 new User({ name: 'asdf', age: 20 });
