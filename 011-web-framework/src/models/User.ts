@@ -50,8 +50,8 @@ export class User {
   };
 
   save = () => {
-    this.sync.save(this.attributes.data).then((response) => {
-      this.attributes.get(response.data);
+    this.sync.save(this.attributes.getAll()).then((response) => {
+      this.trigger('save');
     });
   };
 }
