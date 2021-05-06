@@ -1,4 +1,5 @@
 import { Model } from './Model';
+import { Collection } from './Collection';
 import { Attributes } from './Attributes';
 import { ApiSync } from './ApiSync';
 import { Eventing } from './Eventing';
@@ -17,6 +18,12 @@ export class User extends Model<UserProps> {
       new Attributes<UserProps>(attrs),
       new Eventing(),
       new ApiSync<UserProps>(baseUrl)
+    );
+  }
+
+  static buildUserCollection(): Collection<User, UserProps> {
+    return new Collection<User, UserProps>(baseUrl, (json: UserProps) =>
+      User.buildUser(json)
     );
   }
 }
