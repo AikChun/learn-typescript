@@ -11,7 +11,9 @@ export abstract class View<T extends Model<K>, K> {
     });
   }
 
-  abstract eventsMap(): { [key: string]: () => void };
+  eventsMap(): { [key: string]: () => void } {
+    return {};
+  }
 
   abstract template(): string;
 
