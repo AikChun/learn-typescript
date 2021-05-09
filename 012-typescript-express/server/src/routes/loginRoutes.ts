@@ -23,10 +23,17 @@ router.get('/login', (req: Request, res: Response) => {
 
 router.post('/login', (req: RequestWithBody, res: Response) => {
   const { email, password } = req.body;
-  if (email && password) {
+  if (
+    email &&
+    password &&
+    email == 'test@example.com' &&
+    password === 'password'
+  ) {
     res.send(email + password);
+    req.session = { loggedIn: true };
+    res.redirect('/');
   } else {
-    res.send('You must send it an email and password');
+    res.send('Invalid email or password');
   }
 });
 
