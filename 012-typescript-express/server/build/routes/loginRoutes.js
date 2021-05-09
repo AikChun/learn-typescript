@@ -12,4 +12,7 @@ router.post('/login', function (req, res) {
     if (email && password) {
         res.send(email + password);
     }
+    else {
+        res.send('You must send it an email and password');
+    }
 });
