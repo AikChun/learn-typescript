@@ -7,9 +7,18 @@ class Boat {
   }
 
   @logError('Oops, boat was sunk in the ocean.')
-  pilot(): void {
+  pilot(@parameterDecorator speed: string): void {
+    if (speed === 'fast') {
+      console.log('swish');
+    } else {
+      console.log('nothing');
+    }
     throw new Error();
   }
+}
+
+function parameterDecorator(target: any, key: string, index: number) {
+  console.log(key, index);
 }
 
 function testDecorator(target: any, key: string): void {
@@ -30,4 +39,4 @@ function logError(message: string) {
   };
 }
 
-new Boat().pilot();
+new Boat().pilot('slow');
