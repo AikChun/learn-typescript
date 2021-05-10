@@ -1,4 +1,5 @@
 class Boat {
+  @testDecorator
   color: string = 'red';
 
   get formattedColor(): string {
@@ -9,6 +10,10 @@ class Boat {
   pilot(): void {
     throw new Error();
   }
+}
+
+function testDecorator(target: any, key: string): void {
+  console.log('color', target.color); // this will be undefined. target is the prototype. It will not have properties.
 }
 
 function logError(message: string) {
