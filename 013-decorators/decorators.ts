@@ -1,3 +1,4 @@
+@classDecorator
 class Boat {
   @testDecorator
   color: string = 'red';
@@ -17,6 +18,9 @@ class Boat {
   }
 }
 
+function classDecorator(constructor: Function) {
+  console.log(constructor);
+}
 function parameterDecorator(target: any, key: string, index: number) {
   console.log(key, index);
 }
