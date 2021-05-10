@@ -12,8 +12,6 @@ class Boat {
 }
 
 function testDecorator(target: any, key: string): void {
-  console.log(`Target: ${target}`);
-  console.log(`Key: ${key}`);
+  console.log('Target', target);
+  console.log('Key', key);
 }
-
-new Boat().pilot();
