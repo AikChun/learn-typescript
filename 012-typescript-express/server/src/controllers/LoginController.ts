@@ -1,5 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
-import { controller, get, use } from './decorators';
+import { controller, get, post, use, bodyValidator } from './decorators';
+
+interface RequestWithBody extends Request {
+  body: { [key: string]: string | undefined };
+}
 
 function logger(req: Request, res: Response, next: NextFunction) {
   console.log('Request was made.');
@@ -24,5 +28,22 @@ export class LoginController {
           <button>Submit</button>
         </form>
   `);
+  }
+
+  @post('/login')
+  @bodyValidator('email', 'password')
+  postLogin(req: RequestWithBody, res: Response) {
+    const { email, password } = req.body;
+    if (
+      email &&
+      password &&
+      email == 'test@example.com' &&
+      password === 'password'
+    ) {
+      req.session = { loggedIn: true };
+      res.redirect('/');
+    } else {
+      res.send('Invalid email or password');
+    }
   }
 }
