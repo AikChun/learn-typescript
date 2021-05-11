@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 
+@printMetadata
 class Plane {
   color: string = 'red';
 
@@ -15,5 +16,8 @@ function markFunction(secretInfo: string) {
   };
 }
 
-const secret = Reflect.getMetadata('secret', Plane.prototype, 'fly');
-console.log('secret:', secret);
+function printMetadata(target: typeof Plane) {
+  for (let key in target.prototype) {
+    console.log(Reflect.getMetadata('secret', target.prototype, key));
+  }
+}
