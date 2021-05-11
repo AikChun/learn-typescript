@@ -1,6 +1,13 @@
 import 'reflect-metadata';
-export const get = (path: string) => {
-  return (target: any, key: string, desc: PropertyDescriptor) => {
-    Reflect.defineMetadata('path', path, target, key);
-  };
+
+const createRoute = (method: string) => (path: string) => (
+  target: any,
+  key: string,
+  desc: PropertyDescriptor
+) => {
+  Reflect.defineMetadata('path', path, target, key);
+  Reflect.defineMetadata('method', method, target, key);
 };
+
+export const get = createRoute('get');
+export const post = createRoute('post');

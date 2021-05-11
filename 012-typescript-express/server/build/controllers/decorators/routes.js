@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.get = void 0;
+exports.post = exports.get = void 0;
 require("reflect-metadata");
-var get = function (path) {
-    return function (target, key, desc) {
-        Reflect.defineMetadata('path', path, target, key);
-    };
-};
-exports.get = get;
+var createRoute = function (method) { return function (path) { return function (target, key, desc) {
+    Reflect.defineMetadata('path', path, target, key);
+    Reflect.defineMetadata('method', method, target, key);
+}; }; };
+exports.get = createRoute('get');
+exports.post = createRoute('post');
