@@ -5,15 +5,9 @@ interface RequestWithBody extends Request {
   body: { [key: string]: string | undefined };
 }
 
-function logger(req: Request, res: Response, next: NextFunction) {
-  console.log('Request was made.');
-  next();
-}
-
 @controller('/auth')
 export class LoginController {
   @get('/login')
-  @use(logger)
   getLogin(req: Request, res: Response) {
     res.send(`
         <form method="POST">
@@ -45,5 +39,11 @@ export class LoginController {
     } else {
       res.send('Invalid email or password');
     }
+  }
+
+  @get('/logout')
+  getLogout(req: Request, res: Response) {
+    req.session = undefined;
+    res.redirect('/');
   }
 }

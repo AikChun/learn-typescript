@@ -14,15 +14,11 @@ var router = express_1.Router();
 exports.router = router;
 router.get('/', function (req, res) {
     if (req.session && req.session.loggedIn) {
-        res.send("\n      <div>\n        <div>You are logged in</div>\n        <a href=\"/logout\">Logout</a>\n      </div>\n    ");
+        res.send("\n      <div>\n        <div>You are logged in</div>\n        <a href=\"/auth/logout\">Logout</a>\n      </div>\n    ");
     }
     else {
-        res.send("\n      <div>\n        <div>You are not logged in</div>\n        <a href=\"/login\">Login</a>\n      </div>\n    ");
+        res.send("\n      <div>\n        <div>You are not logged in</div>\n        <a href=\"/auth/login\">Login</a>\n      </div>\n    ");
     }
-});
-router.get('/logout', function (req, res) {
-    req.session = undefined;
-    res.redirect('/');
 });
 router.get('/protected', requireAuth, function (req, res) {
     res.send("\n    <div>Welcome to protected route, logged in user</div>\n  ");
