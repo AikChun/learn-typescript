@@ -21,7 +21,7 @@ export interface DeleteTodoAction {
 }
 
 export const fetchTodos =
-  () => async (dispatch: Dispatch<FetchTodosAction>) => {
+  (): Function => async (dispatch: Dispatch<FetchTodosAction>) => {
     const response = await axios.get<Todo[]>(url);
 
     dispatch({
